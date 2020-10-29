@@ -1,0 +1,8 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/JeremyLorthioir/todo-app.git",
+  "author": "<jeremy.lorthioir24@gmail.com>",
+  "license": "MIT"
+}
