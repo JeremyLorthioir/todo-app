@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
 import TodoItem from "./components/TodoItem";
-import AddTodo from "./components/AddTodo";
+import AddTodo from "./components/addTodo";
 import { getTodos, addTodo, updateTodo, deleteTodo } from "./API";
-
 const App: React.FC = () => {
 	const [todos, setTodos] = useState<ITodo[]>([]);
-
 	useEffect(() => {
 		fetchTodos();
 	}, []);
-
 	const fetchTodos = (): void => {
 		getTodos()
 			.then(({ data: { todos } }: ITodo[] | any) => setTodos(todos))
 			.catch((err: Error) => console.log(err));
 	};
-
 	const handleSaveTodo = (e: React.FormEvent, formData: ITodo): void => {
 		e.preventDefault();
 		addTodo(formData)
@@ -27,7 +23,6 @@ const App: React.FC = () => {
 			})
 			.catch((err) => console.log(err));
 	};
-
 	const handleUpdateTodo = (todo: ITodo): void => {
 		updateTodo(todo)
 			.then(({ status, data }) => {
@@ -38,7 +33,6 @@ const App: React.FC = () => {
 			})
 			.catch((err) => console.log(err));
 	};
-
 	const handleDeleteTodo = (_id: string): void => {
 		deleteTodo(_id)
 			.then(({ status, data }) => {
@@ -48,9 +42,7 @@ const App: React.FC = () => {
 				setTodos(data.todos);
 			})
 			.catch((err) => console.log(err));
-  };
-  
-  
+	};
 	return (
 		<main className="App">
 			<h1>My Todos</h1>
@@ -66,5 +58,4 @@ const App: React.FC = () => {
 		</main>
 	);
 };
-
 export default App;
